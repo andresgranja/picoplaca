@@ -1,0 +1,26 @@
+<h3 style="text-align: center;">Pico y Placa</h3>
+<p-card>
+    <h3 class="first">License Plate</h3>
+    <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">PKH - </span>
+        <p-inputMask [(ngModel)]="plate" mask="999" size="13" required="true" placeholder="123"></p-inputMask><br>   
+    </div>
+    
+    <h3 class="first">Date</h3>
+    <p-calendar inputId="basic" [(ngModel)]="date" placeholder="12/22/2020"></p-calendar>
+    <h3 class="first">Time</h3>
+    <p-calendar inputId="basic2" [(ngModel)]="time" [timeOnly]="true" placeholder="11:26" ></p-calendar>
+    <p-footer>
+        <button pButton type="button" label="Search" icon="pi pi-search" (click)="sendData()"></button>
+    </p-footer>
+</p-card>
+
+<p-toast position="center" key="c" [modal]="true" [baseZIndex]="5000" >
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <i *ngIf="error" class="pi pi-times-circle" style="font-size: 4em"></i>
+            <i *ngIf="!error" class="pi pi-check-circle" style="font-size: 4em"></i>
+            <h3>{{message.summary}}</h3>
+        </div>
+    </ng-template>
+</p-toast>
